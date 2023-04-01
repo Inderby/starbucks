@@ -14,3 +14,24 @@ searchInputEl.addEventListener('blur', function(){
   searchEl.classList.remove('focused');
   searchInputEl.setAttribute('placeHolder', '');
 });
+
+const badgeEl = document.querySelector('header .badges');
+
+window.addEventListener('scroll', _.throttle(function (){
+  if(window.scrollY > 500){
+    //배지 숨기기
+    gsap.to(badgeEl, .6, {
+      opacity: 0,
+      display: 'none'
+    });
+    //to(애니메이션 적용 대상 요소, 애니메이션 지속시간, 옵션)
+  }
+  else{
+    //배지 보이기
+    gsap.to(badgeEl, .6,{
+      opacity:1,
+      display: 'block'
+    })
+  }
+}, 300));
+//_.throttle(함수, 시간)
